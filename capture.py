@@ -24,3 +24,4 @@ while (True):
         f.write(url + '\n')
 
 #Close the File
+f.close()
