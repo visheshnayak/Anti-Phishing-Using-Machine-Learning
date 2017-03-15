@@ -1,5 +1,4 @@
-def domainCheck():
-    url = raw_input()
+def domainCheck(url):
     w=0
     d=0
     flag=0
@@ -17,8 +16,7 @@ def domainCheck():
     else:
         print "1"
 
-def urlChar():
-    url=raw_input()
+def urlChar(url):
     flag=0
     for i in range(0,len(url)):
 	    flag=0
@@ -30,8 +28,7 @@ def urlChar():
     else:
         print "0"
 
-def urlDot():
-    url=raw_input()
+def urlDot(url):
     d=0
     for i in range(0,len(url)):
 	    if url[i]=='.':
@@ -41,12 +38,10 @@ def urlDot():
     else:
         print "0"
 
-def urlLength():
-    url = raw_input()
+def urlLength(url):
     print (len(url))
 
-def urlSens():
-    url = raw_input()
+def urlSens(url):
     if 'secur' in url :
         print('1')
     elif 'login' in url:
@@ -64,8 +59,7 @@ def urlSens():
     else:
         print('0')
 
-def urlHttps() :
-    url = raw_input()
+def urlHttps(url) :
     if 'https://' in url :
         print "0"
     else :
