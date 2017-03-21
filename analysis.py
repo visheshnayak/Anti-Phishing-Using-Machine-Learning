@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn import svm
+from sklearn.svm import SVC
 from featureAdder import featureAdd
 
 #def analyzeURL():
@@ -19,10 +19,17 @@ from featureAdder import featureAdd
 #to read url from the file one by one
 
 learnlist=[]
-clf = svm.SVC(kernel='linear', C = 1.0)
-with open('list.txt', 'r') as file:
-    for url in file:
-        learnlist.append(featureAdd(url))
-        X = np.array( learnlist)
-        Y = [1]
-        clf.fit(X,Y)
+clf = SVC()
+
+with open('list.txt', 'r') as f:
+    for line in f:
+        learnlist.append(featureAdd(line))
+#print len(learnlist)
+X = np.array(learnlist)
+y = [1]*2497
+y.extend([0]*501)
+#print y
+
+clf.fit(X, y)
+
+print clf.predict(featureAdd("https://www.facebook.com"))
