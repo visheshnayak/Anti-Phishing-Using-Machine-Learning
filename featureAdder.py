@@ -1,4 +1,4 @@
-from features import domainCheck, urlChar, urlDot, urlSens, urlCharHash, urlLength, urlHttps
+from features import *
 
 def featureAdd(url):
     secur = url.count("secur")
@@ -10,5 +10,5 @@ def featureAdd(url):
     confirm = url.count("confirm")
     ultimate = secur + login + signin + webscr + ebayisapi + banking + confirm
 
-    reslist = [domainCheck(url), urlChar(url), urlDot(url), urlCharHash(url), urlLength(url), urlHttps(url), ultimate]
+    reslist = [domainCheck(url), urlChar(url), urlDot(url), urlCharHash(url), urlLength(url), urlHttps(url), ultimate, ipcheck(url)]
     return reslist
