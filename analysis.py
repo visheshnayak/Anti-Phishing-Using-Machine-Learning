@@ -1,6 +1,7 @@
 import numpy as np
 from sklearn.svm import SVC
 from featureAdder import featureAdd
+from capture import *
 
 #def analyzeURL():
 #    X = np.array( [Website1, feat1, feat2, feat3,..],
@@ -24,12 +25,24 @@ clf = SVC()
 with open('list.txt', 'r') as f:
     for line in f:
         learnlist.append(featureAdd(line))
+#print learnlist
 #print len(learnlist)
 X = np.array(learnlist)
+#Adding the phishing learning set
 y = [1]*2497
+
+#Adding the normal phishing set
 y.extend([0]*501)
 #print y
 
 clf.fit(X, y)
 
-print clf.predict(featureAdd("https://www.facebook.com"))
+checkURL = captureURL()
+
+res = clf.predict(featureAdd(checkURL))
+print res
+
+if res != [0]:
+    susPage()
+else:
+    print "Not suspicious"
