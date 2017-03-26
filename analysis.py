@@ -1,18 +1,39 @@
 import numpy as np
 from sklearn.svm import SVC
 from featureAdder import featureAdd
-#from capture import *
-#Import
-from selenium import webdriver
 
+from selenium import webdriver
 driver = webdriver.Firefox()
 
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return """<html>
+    <head>
+    <title>Test</title>
+    <meta charset=utf-8>
+    <p>Website is suspicious</p>
+    <a href="/trusted/">I trust this Website</a>
+    </head>
+    </html>
+"""
+
+@app.route('/trusted/')
+def trusted():
+    #Add to learning set
+    print "Added to the dataset"
+    
+
+
 def susPage():
-    driver.get("/home/vishesh/Documents/BE-Project/Anti-Phishing-Using-Machine-Learning/index.html")
+    driver.get("localhost:5000/")
 
 learnlist=[]
 clf = SVC()
 
+#For the dataset
 with open('list.txt', 'r') as f:
     for line in f:
         learnlist.append(featureAdd(line))
