@@ -1,23 +1,14 @@
 import numpy as np
 from sklearn.svm import SVC
 from featureAdder import featureAdd
-from capture import *
+#from capture import *
+#Import
+from selenium import webdriver
 
-#def analyzeURL():
-#    X = np.array( [Website1, feat1, feat2, feat3,..],
-#                  [Website2, feat1, feat2, feat3,..]
-#                  ...
-#    )
-#    Y = [Labels]
-#
-#    clf = svm.SVC(kernel='linear', C = 1.0)
-#
-#    clf.fit(X,Y)
-#
-#    print(clf.predict([website, features])) #Shows result
+driver = webdriver.Firefox()
 
-
-#to read url from the file one by one
+def susPage():
+    driver.get("/home/vishesh/Documents/BE-Project/Anti-Phishing-Using-Machine-Learning/index.html")
 
 learnlist=[]
 clf = SVC()
@@ -37,12 +28,21 @@ y.extend([0]*501)
 
 clf.fit(X, y)
 
-checkURL = captureURL()
+#Get the current URL
+url = driver.current_url
 
-res = clf.predict(featureAdd(checkURL))
-print res
+#Get the URL every time it changes
+while (True):
+    #try:
+    urllater = driver.current_url
+    #except selenium.NoSuchWindowException as e :
+    #    print("You have closed the browser.")
 
-if res != [0]:
-    susPage()
-else:
-    print "Not suspicious"
+    if url != urllater :
+        url = urllater
+        res = clf.predict(featureAdd(url))
+        print res
+        if res != [0]:
+            susPage()
+        else:
+            print "Not suspicious"
