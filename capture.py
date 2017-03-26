@@ -1,26 +1,22 @@
-#!/usr/bin/python
-
-#open file in order to write the URLs
-f = open('URL.txt', 'w+')
-
 #Import
 from selenium import webdriver
 
-#Get Which browser the user is using
 driver = webdriver.Firefox()
 
-#Get the current URL
-url = driver.current_url
+def susPage():
+    driver.get("/home/vishesh/Documents/BE-Project/Anti-Phishing-Using-Machine-Learning/index.html")
 
-#Get the URL every time it changes
-while (True):
-    #try:
-    urllater = driver.current_url
-    #except selenium.NoSuchWindowException as e :
-    #    print("You have closed the browser.")
+def captureURL():
+    #Get the current URL
+    url = driver.current_url
 
-    if url != urllater :
-        url = urllater
-        f.write(url + '\n')
+    #Get the URL every time it changes
+    while (True):
+        #try:
+        urllater = driver.current_url
+        #except selenium.NoSuchWindowException as e :
+        #    print("You have closed the browser.")
 
-#Close the File
+        if url != urllater :
+            url = urllater
+            return url
