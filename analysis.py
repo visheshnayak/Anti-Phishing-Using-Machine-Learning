@@ -21,11 +21,19 @@ def urlAnalysis() :
     while (True):
         #Get the current URL
         urllater = driver.current_url
-
         if url != urllater :
             url = urllater
+
+            #Open a file in order to write the current URL
+            f = open('currenturl.txt', 'w')
+
+            #Write the current URL into the file
+            f.write(url)
+            f.close()
+
             res = clf2.predict(featureAdd(url))
             print res
+
             if res != [0]:
                 susPage()
             else:

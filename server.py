@@ -1,3 +1,4 @@
+from learn import learning
 from flask import Flask
 app = Flask(__name__)
 
@@ -22,4 +23,23 @@ def index():
 @app.route('/trusted/')
 def trusted():
     #Add to learning set
-    print "Added to the dataset"
+    urlnow = open('currenturl.txt', 'r')
+    cururl = urlnow.read()
+    urlnow.close()
+
+    dataset = open('list.txt', 'a')
+    dataset.write(cururl + '\n')
+    dataset.close()
+
+    #Making the system learn again
+    learning()
+
+    return """
+    <html>
+    <head>
+    <title>Trusted</title>
+    </head>
+    <body>
+    <p>Added to the dataset<p>
+    </body>
+    </html>"""
