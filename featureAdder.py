@@ -10,5 +10,5 @@ def featureAdd(url):
     confirm = url.count("confirm")
     ultimate = secur + login + signin + webscr + ebayisapi + banking + confirm
 
-    reslist = [domainCheck(url), urlChar(url), urlDot(url), urlCharHash(url), urlLength(url), urlHttps(url), ultimate, ipcheck(url)]
+    reslist = [domainCheck(url), urlChar(url), urlDot(url), urlCharHash(url), urlLength(url), urlHttps(url), ultimate, ipcheck(url), chardash(url)]
     return reslist

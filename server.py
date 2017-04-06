@@ -27,19 +27,12 @@ def trusted():
     cururl = urlnow.read()
     urlnow.close()
 
-    dataset = open('list.txt', 'a')
-    dataset.write(cururl + '\n')
-    dataset.close()
+    if cururl != 'http://localhost:5000/' or cururl != 'http://localhost:5000/trusted/' :
+        dataset = open('verified_offline.csv', 'a')
+        dataset.write(cururl + '\n')
+        dataset.close()
 
     #Making the system learn again
     learning()
 
-    return """
-    <html>
-    <head>
-    <title>Trusted</title>
-    </head>
-    <body>
-    <p>Added to the dataset<p>
-    </body>
-    </html>"""
+    return ""
