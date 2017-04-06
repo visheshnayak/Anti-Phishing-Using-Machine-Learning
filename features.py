@@ -1,3 +1,4 @@
+import socket
 def domainCheck(url):
     wc = url.count("www.")
     return wc
@@ -82,14 +83,11 @@ def urlHttps(url) :
     return httpc
 
 def ipcheck(url) :
-    d=0
-    flag=0
-    d = url.count(".")
-    for i in range(0,3):
-	    if url[i].isdigit()=="True" or url[2]=='.' or url[3]=='.':
-		    flag=1
-
-    if d==3 and flag==1:
-	    return 1
-    else:
+    try:
+        socket.inet_aton(url)
+        return 1
+    except socket.error:
         return 0
+
+def chardash(url):
+    return url.count('-')
