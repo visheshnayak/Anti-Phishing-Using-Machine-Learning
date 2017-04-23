@@ -10,13 +10,12 @@ def startServer() :
 @app.route('/')
 def index():
     return """<html>
-    <head>
-    <title>Test</title>
-    <meta charset=utf-8>
-    <p>Website is suspicious</p>
-    <a href="/trusted/">I trust this Website</a>
-    </head>
-    </html>
+<head>
+<title>Suspicious Website</title>
+</head>
+<body>
+<h3>You are about to access a website that is deemed suspicious by our algorithm</h3>
+<p>If you know this website and trust this website, then click <a href="localhost:5000/trusted/">here</a>.</p>
 """
 
 #If trusted website is put in
