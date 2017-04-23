@@ -10,34 +10,12 @@ def startServer() :
 @app.route('/')
 def index():
     return """<html>
-   <head>
-<link href='//fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
+<head>
+<title>Suspicious Website</title>
+</head>
 <body>
-<style>
-button {
-    background-color: #B22222;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-	font-family:"Lucida Sans Typewriter",Lucida Console,monaco,Bitstream Vera Sans Mono,monospace;
-
-}
-	
-body {
-background-image: url("pic1.jpg");
-}
-
-</style>
-<section>
-<center><font size ="6"><p style="color:#FF6347;font-family:'Lucida Sans Typewriter',Lucida Console,monaco,Bitstream Vera Sans Mono,monospace">This is a suspicious website</p></font></center>
-<br><center><button title='You are about to enter a suspicious website'style="color:#FFDAB9">I trust this website and wish to proceed.</button></center><title="You are about to enter a suspicious website">
-</section>
+<h3>You are about to access a website that is deemed suspicious by our algorithm</h3>
+<p>If you know this website and trust this website, then click <a href="localhost:5000/trusted/">here</a>.</p>
 </body>
 </html>
 """
