@@ -16,6 +16,8 @@ def index():
 <body>
 <h3>You are about to access a website that is deemed suspicious by our algorithm</h3>
 <p>If you know this website and trust this website, then click <a href="localhost:5000/trusted/">here</a>.</p>
+</body>
+</html>
 """
 
 #If trusted website is put in
